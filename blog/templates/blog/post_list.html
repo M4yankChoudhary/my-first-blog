@@ -6,7 +6,13 @@
         <div>
             <h1><a href="/">It"s all about Programming.</a></h1>
         </div>
-
+        {% for post in posts %}
+    <div>
+        <p>published: {{ post.published_date }}</p>
+        <h2><a href="">{{ post.title }}</a></h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+{% endfor %}
         <div>
             <p>published: 15.04.2019, 5:30</p>
             <h2><a href="">How to start Programming ?</a></h2>
