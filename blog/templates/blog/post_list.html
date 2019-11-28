@@ -1,27 +1,13 @@
-<html>
-    <head>
-        <title>Mayank's blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">It"s all about Programming.</a></h1>
-        </div>
-        {% for post in posts %}
-    <div>
-        <p>published: {{ post.published_date }}</p>
-        <h2><a href="">{{ post.title }}</a></h2>
-        <p>{{ post.text|linebreaksbr }}</p>
-    </div>
-{% endfor %}
-        <div>
-            <p>published: 15.04.2019, 5:30</p>
-            <h2><a href="">How to start Programming ?</a></h2>
-            <p>
-                First of all, you need to know that there is a difference between programming and programming languages. Programming is an art. Start your first language from a standard book and learn another language as required. The book helps you to learn deeply and clear your concepts. Learn one Programming language and become master in it. Choose any of the available programming languages which you will be learning. Choice of programming language may differ from person to person. I suggest you to start with a hard language so you can learn other languages easily. You can start with the CS50 course on edx. CS50 is an online introductory course on Computer Science taught at Harvard University.
-               <a href="https://cs50.harvard.edu/college/"> CS50 </a> <br />
+{% extends 'blog/base.html' %}
 
-                Learning by doing is a fun way of learning. By making projects you never get bored. Ask your doubts on Stack Overflow or Quora.
-            </p>
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
         </div>
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
